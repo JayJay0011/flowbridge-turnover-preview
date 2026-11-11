@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An interactive Flowbridge Digital concept for clearer serviced-accommodation turnover operations." />
+  <title>Flowbridge Turnover Operations Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <button class="mobile-close" id="mobileClose" aria-label="Close navigation">×</button>
+      <div class="brand"><span class="brand-roof">//</span><strong>FLOWBRIDGE</strong><small>Serviced accommodation<br>operations concept</small></div>
+      <nav aria-label="Primary navigation">
+        <button class="nav-item"><span>⌂</span>Operations</button>
+        <button class="nav-item active"><span>↻</span>Today’s turnovers</button>
+        <button class="nav-item"><span>✓</span>Tasks</button>
+        <button class="nav-item"><span>⌁</span>Maintenance</button>
+        <button class="nav-item"><span>□</span>Messages</button>
+        <button class="nav-item"><span>▥</span>Properties</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="live-dot"></span><strong>Interactive preview</strong>
+        <small>By Flowbridge Digital</small>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="page-header">
+        <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
+        <div><h1>Today’s turnovers</h1><p>Same-day departures, turnovers and arrivals, in one place.</p></div>
+        <div class="concept-label"><span>ⓘ</span> Flowbridge concept <b>•</b> Illustrative sample data</div>
+      </header>
+
+      <section class="status-strip" aria-label="Turnover summary">
+        <button class="summary ready" data-filter="ready"><span class="summary-icon">✓</span><span><strong>Ready</strong><em id="readyCount">2</em><small>Turnovers today</small></span></button>
+        <button class="summary risk" data-filter="risk"><span class="summary-icon">!</span><span><strong>At risk</strong><em id="riskCount">2</em><small>Needs attention</small></span></button>
+        <button class="summary blocked" data-filter="blocked"><span class="summary-icon">×</span><span><strong>Blocked</strong><em id="blockedCount">1</em><small>Cannot turn over</small></span></button>
+      </section>
+
+      <div class="toolbar">
+        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search properties…" /></label>
+        <div class="filters" id="filters">
+          <button class="filter active" data-filter="all">All <span>5</span></button>
+          <button class="filter" data-filter="ready">Ready</button>
+          <button class="filter" data-filter="risk">At risk</button>
+          <button class="filter" data-filter="blocked">Blocked</button>
+        </div>
+        <div class="date-control">▣ <span>Today</span></div>
+      </div>
+
+      <div class="workspace">
+        <section class="turnover-panel">
+          <div class="mobile-section-title"><strong>Property status</strong><small>Tap a property to inspect</small></div>
+          <div class="table-head"><span>Property</span><span>Status</span><span>Check-in</span><span>Housekeeping</span><span>Maintenance</span><span>Guest message</span><span>Owner</span></div>
+          <div id="propertyList" class="property-list"></div>
+          <div id="emptyState" class="empty-state" hidden>No properties match this view.</div>
+
+          <section class="connections">
+            <button class="connections-toggle" id="connectionsToggle" aria-expanded="true"><span>⌁</span><strong>How this could connect</strong><span class="chevron">⌃</span></button>
+            <div class="connection-grid" id="connectionGrid">
+              <article><span>▣</span><div><strong>Booking platform</strong><small>Sync departures, arrivals and property status.</small></div></article>
+              <article><span>✓</span><div><strong>Task management</strong><small>Create and track housekeeping and maintenance tasks.</small></div></article>
+              <article><span>□</span><div><strong>Messaging</strong><small>Schedule and send guest arrival messages.</small></div></article>
+            </div>
+            <p class="connection-note">Potential connections shown for discussion only. No live integrations are active in this prototype.</p>
+          </section>
+        </section>
+
+        <aside class="detail-panel" id="detailPanel" aria-live="polite"></aside>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"><span>✓</span><div><strong>Repair marked as resolved</strong><small>The property is now ready for check-in.</small></div><button aria-label="Dismiss">×</button></div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <script src="app.js"></script>
+</body>
+</html>
